@@ -7,6 +7,40 @@
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     @apply antialiased text-slate-800 bg-white;
   }
+
+  /* Global contrast fix: Ensure all headings on the default light background are readable */
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-slate-900 !important;
+  }
+  
+  /* Also fix secondary headings / subtitles that follow a main heading */
+  h1 + p, h2 + p, h3 + p {
+    @apply text-slate-600 !important;
+  }
+
+  /* Exception: Preserve white text if the container explicitly has a dark background */
+  [class*="bg-slate-9"] h1, [class*="bg-slate-8"] h1,
+  [class*="bg-slate-9"] h2, [class*="bg-slate-8"] h2,
+  [class*="bg-slate-9"] h3, [class*="bg-slate-8"] h3,
+  [class*="bg-slate-9"] h4, [class*="bg-slate-8"] h4,
+  [class*="bg-slate-9"] h5, [class*="bg-slate-8"] h5,
+  [class*="bg-slate-9"] h6, [class*="bg-slate-8"] h6,
+  [class*="bg-sky-9"] h1, [class*="bg-sky-9"] h2, [class*="bg-sky-9"] h3,
+  [class*="bg-emerald-9"] h1, [class*="bg-emerald-9"] h2, [class*="bg-emerald-9"] h3,
+  [class*="bg-gray-9"] h1, [class*="bg-gray-9"] h2, [class*="bg-gray-9"] h3,
+  [class*="bg-black"] h1, [class*="bg-black"] h2, [class*="bg-black"] h3 {
+    @apply text-white !important;
+  }
+
+  [class*="bg-slate-9"] h1 + p, [class*="bg-slate-8"] h1 + p,
+  [class*="bg-slate-9"] h2 + p, [class*="bg-slate-8"] h2 + p,
+  [class*="bg-slate-9"] h3 + p, [class*="bg-slate-8"] h3 + p,
+  [class*="bg-sky-9"] h1 + p, [class*="bg-sky-9"] h2 + p, [class*="bg-sky-9"] h3 + p,
+  [class*="bg-emerald-9"] h1 + p, [class*="bg-emerald-9"] h2 + p, [class*="bg-emerald-9"] h3 + p,
+  [class*="bg-gray-9"] h1 + p, [class*="bg-gray-9"] h2 + p, [class*="bg-gray-9"] h3 + p,
+  [class*="bg-black"] h1 + p, [class*="bg-black"] h2 + p, [class*="bg-black"] h3 + p {
+    @apply text-slate-300 !important;
+  }
 }
 
 @layer utilities {

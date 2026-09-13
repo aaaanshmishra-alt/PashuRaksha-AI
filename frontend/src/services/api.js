@@ -7,9 +7,11 @@ if (rawBaseUrl) {
   if (!rawBaseUrl.endsWith('/api/v1') && !rawBaseUrl.endsWith('/api')) {
     rawBaseUrl = `${rawBaseUrl}/api/v1`
   }
+} else if (!import.meta.env.PROD) {
+  rawBaseUrl = `${window.location.protocol}//${window.location.hostname}:8000/api/v1`
 }
 
-const API_BASE_URL = rawBaseUrl || (import.meta.env.PROD ? '/api/v1' : 'http://127.0.0.1:8000/api/v1')
+const API_BASE_URL = rawBaseUrl || '/api/v1'
 
 const apiClient = axios.create({
   baseURL: API_BASE_URL,

@@ -60,3 +60,14 @@ pnpm-debug.log*
 Thumbs.db
 
 pashuraksha.db
+
+# Additional ignores
+*.log
+*.patch
+*.png
+frontend/test_*.js
+frontend/test_*.cjs
+frontend/*.txt
+ml/data/
+ml/processed/
+

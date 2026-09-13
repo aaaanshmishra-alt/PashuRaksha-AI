@@ -131,38 +131,56 @@ The application includes a built-in deterministic demo controller with **1-Click
 
 ## 🛠️ 7. Quickstart & Local Installation
 
-### Prerequisites
-- Python 3.10+
-- Node.js 18+
+### Requirements
+- Python 3.11+
+- Node.js
+- npm
 
-### Step 1: Clone Repository
+### Clone
 ```bash
-git clone https://github.com/rudrapratap17003-coder/PashuRaksha-AI.git
+git clone git@github.com:rudrapratap17003-coder/PashuRaksha-AI.git
 cd PashuRaksha-AI
 ```
 
-### Step 2: Setup Backend
+### Backend
 ```bash
 cd backend
-python -m venv .venv
-
-# Windows:
-.\.venv\Scripts\activate
-# Linux/macOS:
-# source .venv/bin/activate
-
+python3 -m venv .venv
+source .venv/bin/activate
+# Windows: .venv\Scripts\activate
 pip install -r requirements.txt
-python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+cd ..
 ```
 
-### Step 3: Setup Frontend
+### Frontend
 ```bash
-cd ../frontend
+cd frontend
 npm install
-npm run dev
+cd ..
 ```
 
-- **Frontend URL**: `http://localhost:5173`
+### Environment
+Create `frontend/.env` from `frontend/.env.example`:
+```env
+VITE_API_URL=http://127.0.0.1:8000/api/v1
+```
+
+### Run
+
+**Backend:**
+```bash
+cd backend
+source .venv/bin/activate
+uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload
+```
+Verify the backend is running by opening: [http://127.0.0.1:8000/health](http://127.0.0.1:8000/health)
+
+**Frontend (in another terminal):**
+```bash
+npm --prefix frontend run dev
+```
+
+- **Frontend URL**: `http://localhost:5173` (Note: Vite may use another port like 5174 if 5173 is occupied)
 - **Interactive Jury Stage**: `http://localhost:5173/presentation`
 - **FastAPI OpenAPI Swagger**: `http://localhost:8000/docs`
 
